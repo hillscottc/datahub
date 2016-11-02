@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bookshelf": "^0.10.2",
     "express": "^4.14.0",
     "express-graphql": "^0.5.4",
-    "graphql": "^0.7.2"
+    "graphql": "^0.7.2",
+    "knex": "^0.12.6",
+    "pg": "^6.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
