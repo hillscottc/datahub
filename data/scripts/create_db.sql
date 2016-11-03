@@ -1,5 +1,13 @@
 -- Based on https://github.com/calebmer/postgraphql/blob/master/examples/forum/TUTORIAL.md
 
+
+
+begin;
+drop schema if exists plantapp, plantapp_private cascade;
+drop role if exists plantapp_pgql, plantapp_anonymous, plantapp_person, plantapp_postgraphql_demo;
+commit;
+
+
 CREATE SCHEMA plantapp;
 
 CREATE TABLE plantapp.plant (
