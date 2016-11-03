@@ -2,21 +2,13 @@
 
 CREATE SCHEMA plantapp;
 
-CREATE TABLE plantapp.family (
-    id serial PRIMARY KEY,
-    name text NOT NULL CHECK (char_length(name) < 25),
-    created_at TIMESTAMP DEFAULT now()
-);
-COMMENT ON TABLE plantapp.family IS 'Family types for plants';
-
-
 CREATE TABLE plantapp.plant (
     id serial PRIMARY KEY,
     symbol text NOT NULL CHECK (char_length(symbol) < 8),
     synonym text CHECK (char_length(synonym) < 8),
     sci_name text CHECK (char_length(sci_name) < 250),
     common_name text CHECK (char_length(common_name) < 50),
-    family_id integer NOT NULL REFERENCES plantapp.family(id),
+    family text CHECK (char_length(family) < 25),
     created_at TIMESTAMP DEFAULT now()
 );
 COMMENT ON TABLE plantapp.plant IS 'USDA Plants List';
