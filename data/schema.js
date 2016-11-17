@@ -3,13 +3,13 @@ import {
     GraphQLObjectType as ObjectType,
 } from 'graphql';
 
-import plant from './queries/plant';
+import plants from './queries/plants';
 
 const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
-      plant,
+      plants
     },
   }),
 });

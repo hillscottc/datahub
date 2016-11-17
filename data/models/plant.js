@@ -1,14 +1,15 @@
 import Bookshelf from '../bookshelf-db';
 
+
 Bookshelf.plugin('pagination');
 
-const Plant = Bookshelf.Model.extend({
-  tableName: 'plant',
-});
 
+class Plant extends Bookshelf.Model {
 
-module.exports.Plant = Plant;
+  get tableName() { return 'plant'; }
 
+}
 
+export default Plant;
 
 
