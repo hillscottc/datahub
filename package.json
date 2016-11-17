@@ -2,6 +2,7 @@
   "name": "datahub",
   "version": "1.0.0",
   "description": "a graphql server",
+  "repository": "https://github.com/hillscottc/datahub",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
