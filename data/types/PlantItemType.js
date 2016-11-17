@@ -5,7 +5,7 @@ import {
     GraphQLNonNull as NonNull,
 } from 'graphql';
 
-const PlantType = new ObjectType({
+const PlantItemType = new ObjectType({
   name: 'Plant',
   fields: {
     id: { type: new NonNull(ID) },
@@ -17,4 +17,4 @@ const PlantType = new ObjectType({
   },
 });
 
-export default PlantType;
+export default PlantItemType;
