@@ -1,7 +1,6 @@
 /**
  * Server routes at /api/
  */
-const debug = require('debug')('datahub:api');
 import Plant from '../database/models/plant';
 import express from 'express';
 
@@ -35,8 +34,6 @@ router.get('/plants/', (req, res) => {
 router.post('/plants/', (req, res) => {
 
   const {family, common, symbol, sci, limit, offset} = req.body;
-
-  debug("Handling POST:", req.body);
 
   Plant.forge()
       .query((qb) => {
