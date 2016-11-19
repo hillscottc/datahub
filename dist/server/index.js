@@ -22,6 +22,18 @@ app.use((0, _morgan2.default)("dev"));
 app.set('port', process.env.PORT || 3001);
 // app.set('port', 3001);
 
+// Enable CORS (cross-origin resource sharing)
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+});
+
 // Enable routes with /api prefix
 var api_routes = require('./api_routes');
 app.use('/api', api_routes);
