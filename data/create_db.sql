@@ -1,8 +1,9 @@
 
+CREATE SCHEMA plants;
 
-DROP TABLE IF EXISTS plant;
+--SET search_path TO plants;
 
-CREATE TABLE plant (
+CREATE TABLE plants.plant (
     id serial primary key,
     symbol varchar(8) NOT NULL,
     synonym varchar(8),
@@ -12,5 +13,5 @@ CREATE TABLE plant (
 );
 
 -- Note, you need to get the path right here. This should be scripted somehow.
-\copy plant(symbol,synonym,sci_name,common_name,family) from '/Users/hills120/dev/plantapp/data/plants.csv' DELIMITER ',' CSV HEADER
+\copy plants.plant(symbol,synonym,sci_name,common_name,family) from '/Users/hills120/dev/datahub/data/plants.csv' DELIMITER ',' CSV HEADER
 
