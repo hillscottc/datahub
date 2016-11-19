@@ -1,12 +1,15 @@
 import should from 'should';
 import supertest from 'supertest';
 import querystring from 'querystring';
+import config from '../src/config';
 import '../src/server/index.js';
 
 const server = supertest.agent("http://localhost:3001");
 
 
 describe('Plants API', function() {
+
+  console.log("DB: " + config.databaseUrl);
 
   describe('plants', function() {
 

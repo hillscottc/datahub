@@ -32,7 +32,7 @@ var Plant = function (_Bookshelf$Model) {
   _createClass(Plant, [{
     key: 'tableName',
     get: function get() {
-      return 'plant';
+      return 'plants.plant';
     }
 
     /**

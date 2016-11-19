@@ -4,7 +4,7 @@ Bookshelf.plugin('pagination');
 
 class Plant extends Bookshelf.Model {
 
-  get tableName() { return 'plant'; }
+  get tableName() { return 'plants.plant'; }
 
   /**
    * Sets a knex query builder object for given search params.
