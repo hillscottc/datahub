@@ -19,11 +19,13 @@ router.get('/clues/:limit?', (req, res) => {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
+
     // join with category name
     const query = client.query(
-      "SELECT clue.id, category.category_name AS category, clue.question, clue.answer FROM trivia.clue " +
+      "SELECT clue.id AS clue_id, category.category_name AS category, clue.question, clue.answer FROM trivia.clue " +
       "JOIN trivia.category ON category.id = clue.category_id " +
       "ORDER BY random() LIMIT " + limit + ";");
+
     query.on('row', (row) => {
       results.push(row);
     });
@@ -46,7 +48,7 @@ router.get('/clues/cat/:id', (req, res) => {
       return res.status(500).json({ success: false, data: err});
     }
     const query = client.query(
-      "SELECT clue.id, category.category_name AS category, clue.question, clue.answer FROM trivia.clue " +
+      "SELECT clue.id AS clue_id, category.category_name AS category, clue.question, clue.answer FROM trivia.clue " +
       "JOIN trivia.category ON category.id = clue.category_id " +
       "WHERE clue.category_id = $1;", [id]);
     query.on('row', (row) => {
@@ -70,7 +72,10 @@ router.get('/cats/:limit?', (req, res) => {
       console.log(err);
       return res.status(500).json({ success: false, data: err});
     }
-    const query = client.query("SELECT * FROM trivia.category ORDER BY random() LIMIT " + limit + ";");
+    // const query = client.query("SELECT * FROM trivia.category ORDER BY random() LIMIT " + limit + ";");
+    const query = client.query(
+      "SELECT id as category_id, category_name FROM trivia.category " +
+      "ORDER BY random() LIMIT " + limit + ";");
     query.on('row', (row)  =>{
       results.push(row);
     });
