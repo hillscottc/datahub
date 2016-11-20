@@ -8,7 +8,7 @@ const server = supertest.agent("http://localhost:3001");
 describe('Trivia API', function() {
 
 
-  describe('clues', function() {
+  describe('Clues', function() {
 
     it('GET random clues', function(done) {
       server
@@ -21,7 +21,7 @@ describe('Trivia API', function() {
         });
     });
 
-    it('GET clues by cat', function(done) {
+    it('GET clues by category', function(done) {
       server
         .get('/trivia/clues/cat/307')
         .end(function(err, res) {
@@ -31,7 +31,7 @@ describe('Trivia API', function() {
           // console.log(clues);
           clues.length.should.equal(15);
           for (const clue of clues) {
-            console.log(clue);
+            clue.category.should.equal('100,000 REASONS');
           }
           done();
         });
@@ -40,23 +40,19 @@ describe('Trivia API', function() {
   });
 
 
-  // describe('cats', function() {
-  //
-  //   it('random cats', function(done) {
-  //     server
-  //       .get('/api/cats')
-  //       .end(function(err, res) {
-  //         if (err) { throw err }
-  //         res.statusCode.should.equal(200);
-  //
-  //         console.log(res.body.data);
-  //
-  //         // res.body.data.length.should.equal(10);
-  //         // res.body.pagination.rowCount.should.equal(189125);
-  //         done();
-  //       });
-  //   });
-  //
-  // });
+  describe('Categories', function() {
+
+    it('random cats', function(done) {
+      server
+        .get('/trivia/cats')
+        .end(function(err, res) {
+          if (err) { throw err }
+          res.statusCode.should.equal(200);
+          res.body.length.should.equal(10);
+          done();
+        });
+    });
+
+  });
 
 });

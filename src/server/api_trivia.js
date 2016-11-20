@@ -60,5 +60,26 @@ router.get('/clues/cat/:id', (req, res) => {
 });
 
 
+// GET /api/cats -- RANDOM categories
+router.get('/cats/:limit?', (req, res) => {
+  const {limit=10} = req.params;
+  const results = [];
+  pg.connect(config.databaseUrl, (err, client, done) => {
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({ success: false, data: err});
+    }
+    const query = client.query("SELECT * FROM trivia.category ORDER BY random() LIMIT " + limit + ";");
+    query.on('row', (row)  =>{
+      results.push(row);
+    });
+    query.on('end', ()  =>{
+      done();
+      return res.json(results);
+    });
+  });
+});
+
 
 module.exports = router;
