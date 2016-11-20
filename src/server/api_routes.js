@@ -2,9 +2,30 @@
  * Server routes at /api/
  */
 import {Plant} from '../database/plants-schema';
+import {Clue} from '../database/trivia-schema';
 import express from 'express';
 
 const router = express.Router();
+
+
+// GET clues all
+router.get('/clues/', (req, res) => {
+
+  const {limit=10, offset=0} = req.query;
+
+  Clue.forge()
+    .fetchPage({limit, offset})
+    .then((clues) => {
+      return res.json({
+        data: clues.toJSON(),
+        pagination: clues.pagination
+      })
+    })
+    .catch((err) => {
+      return res.status(500).json({error: true, data: {message: err.message}});
+    });
+});
+
 
 // GET plants all
 router.get('/plants/', (req, res) => {
