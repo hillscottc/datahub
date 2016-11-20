@@ -21,7 +21,7 @@ describe('Trivia API', function() {
         });
     });
 
-    it('GET clues by category', function(done) {
+    it('GET clues by category id', function(done) {
       server
         .get('/trivia/clues/cat/307')
         .end(function(err, res) {
