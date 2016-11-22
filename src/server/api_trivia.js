@@ -1,5 +1,5 @@
 /**
- * Server routes at /api/
+ * Server routes at /trivia/
  */
 // import {Clue, Category} from '../database/trivia-schema';
 import express from 'express';
