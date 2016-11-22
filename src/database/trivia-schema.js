@@ -4,7 +4,7 @@ Bookshelf.plugin('pagination');
 
 export class Category extends Bookshelf.Model {
 
-  get tableName() { return 'trivia.category'; }
+  get tableName() { return 'category'; }
 
   clues() {
     return this.hasMany(Clue);
@@ -14,7 +14,7 @@ export class Category extends Bookshelf.Model {
 
 export class Clue extends Bookshelf.Model {
 
-  get tableName() { return 'trivia.clue'; }
+  get tableName() { return 'clue'; }
 
   category() {
     return this.belongsTo(Category);

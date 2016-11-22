@@ -9,12 +9,12 @@ const clue_id = 1633;
 
 Category.forge()
   .query((qb) => {
-    qb.limit(2);
+    qb.limit(1);
     // qb.join('trivia.category', 'clue.category_id', 'category.id');
   })
   // .fetchPage({limit, offset})
-  .fetchAll()
-  // .fetch({withRelated: ['clues'], withSchema: 'trivia'})
+  // .fetchAll()
+  .fetch({withRelated: ['clues']})
   .then((items) => {
 
     console.log(items.toJSON());
