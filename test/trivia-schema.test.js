@@ -5,7 +5,7 @@ describe('Trivia Schema', function() {
 
   describe('Category', function() {
 
-    it('GET cat id 307', function(done) {
+    it('get cat by id', function(done) {
 
       const id = 307;
 
@@ -21,7 +21,7 @@ describe('Trivia Schema', function() {
         .then((cat) => {
           // console.log(cat);
           const {id, category_name} = cat.attributes;
-          console.log(category_name);
+          // console.log(category_name);
           id.should.equal(id);
           category_name.should.equal("100,000 REASONS");
 
