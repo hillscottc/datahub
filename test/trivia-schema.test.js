@@ -1,37 +1,38 @@
 import should from 'should';
-import {Category, Clue} from '../src/database/trivia-schema'
+import {Category, Clue} from '../src/database/trivia/schema'
 
 describe('Trivia Schema', function() {
 
-  describe('Cats', function() {
+  describe('Category', function() {
 
-    it('GET a cat and its clues', function(done) {
+    it('GET cat id 307', function(done) {
 
-      Category.forge()
+      const id = 307;
+
+      Category.forge({id})
         .query((qb) => {
-          qb.limit(1);
+          qb.limit(2);
           // qb.join('trivia.category', 'clue.category_id', 'category.id');
         })
         // .fetchPage({limit, offset})
         // .fetchAll()
-        .fetch({withRelated: ['clues']})
-        .then((items) => {
+        .fetch()
+        // .fetch({withRelated: ['clues']})
+        .then((cat) => {
+          // console.log(cat);
+          const {id, category_name} = cat.attributes;
+          console.log(category_name);
+          id.should.equal(id);
+          category_name.should.equal("100,000 REASONS");
 
-          console.log(items.toJSON());
           done();
-
         })
         .catch((err) => {
           console.error(err)
         });
 
-
-
     });
 
-
   });
-
-
 
 });

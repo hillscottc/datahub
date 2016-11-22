@@ -1,4 +1,4 @@
-import {Clue, Category} from '../database/trivia-schema';
+import {Clue, Category} from '../database/trivia/schema';
 
 
 const limit = 3;

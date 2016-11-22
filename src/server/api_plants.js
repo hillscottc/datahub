@@ -1,7 +1,7 @@
 /**
  * Server routes at /api/
  */
-import {Plant} from '../database/plants-schema';
+import {Plant} from '../database/plants/schema';
 import express from 'express';
 
 const router = express.Router();
