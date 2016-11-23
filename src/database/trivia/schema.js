@@ -1,6 +1,8 @@
 import Bookshelf from './bookshelf-trivia';
 
+
 Bookshelf.plugin('pagination');
+
 
 export class Category extends Bookshelf.Model {
 
@@ -10,7 +12,13 @@ export class Category extends Bookshelf.Model {
     return this.hasMany(Clue);
   }
 
+  // the app expects id to be called category_id
+  static fixId({id, ...args}) {
+    return {category_id: id, ...args};
+  }
+
 }
+
 
 export class Clue extends Bookshelf.Model {
 
@@ -18,6 +26,11 @@ export class Clue extends Bookshelf.Model {
 
   category() {
     return this.belongsTo(Category);
+  }
+
+  // the app expects id to be called clue_id
+  static fixId({id, ...args}) {
+    return {clue_id: id, ...args};
   }
 
 }

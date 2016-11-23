@@ -1,7 +1,7 @@
 /**
  * Server routes at /trivia/
  */
-// import {Clue, Category} from '../database/trivia-schema';
+import {Clue, Category} from '../database/trivia/schema';
 import express from 'express';
 import pg from 'pg';
 import config from '../config';
@@ -34,6 +34,9 @@ router.get('/clues/:limit?', (req, res) => {
       return res.json(results);
     });
   });
+
+
+
 });
 
 
