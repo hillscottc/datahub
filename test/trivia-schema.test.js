@@ -68,6 +68,11 @@ describe('Trivia Schema', function() {
       .fetchAll()
       .then((clues) => {
         clues.length.should.equal(10);
+
+        for (const clue of clues) {
+          console.log(clue.toJSON())
+        }
+
         done();
       })
       .catch((err) => {
