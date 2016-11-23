@@ -67,12 +67,13 @@ describe('Trivia Schema', function() {
       })
       .fetchAll()
       .then((clues) => {
+        // fix it ... id -> clue_id
+        return clues.models.map(clue => {
+          return Clue.fixId(clue.attributes)
+        });
+      })
+      .then((clues) => {
         clues.length.should.equal(10);
-
-        // for (const clue of clues) {
-        //   console.log(clue.toJSON())
-        // }
-
         done();
       })
       .catch((err) => {
