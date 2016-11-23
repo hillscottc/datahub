@@ -24,7 +24,6 @@ router.get('/clues/:limit?', (req, res) => {
       });
     })
     .then((clues) => {
-      clues.length.should.equal(10);
       return res.json(clues);
     })
     .catch((err) => {
