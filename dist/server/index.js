@@ -35,8 +35,13 @@ app.use(function (req, res, next) {
 });
 
 // Enable routes with /api prefix
-var api_routes = require('./api_routes');
-app.use('/api', api_routes);
+var api_plants = require('./api_plants');
+app.use('/api', api_plants);
+
+// Enable routes with /trivia prefix
+// I need to standardize this.
+var trivia = require('./api_trivia');
+app.use('/trivia', trivia);
 
 app.listen(app.get('port'), function () {
   console.log('Server at: http://localhost:' + app.get('port') + '/'); // eslint-disable-line no-console

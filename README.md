@@ -1,8 +1,10 @@
 # datahub
 
-Express is used to serve an api for a Postgres db.
+An Express app serving data.
 
-Uses bookshelf ORM.
+The database is Postgres with Bookshelf ORM.
 
 Deployed at [https://sch-datahub.herokuapp.com/]
+
+Serving apis for the 
 
