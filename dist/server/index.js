@@ -12,6 +12,10 @@ var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -32,6 +36,17 @@ app.use(function (req, res, next) {
   } else {
     next();
   }
+});
+
+app.get('/', function (req, res) {
+  var timestamp = (0, _moment2.default)().format('MMM Do YYYY, h:mm:ss a');
+  res.send('Datahub is up, ' + timestamp + '.');
+});
+
+app.get('/helloworld', function (req, res) {
+  res.status(200).json({
+    message: "Hello there!"
+  });
 });
 
 // Enable routes with /api prefix
