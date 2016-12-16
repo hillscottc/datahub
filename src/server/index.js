@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import moment from 'moment';
 
 const app = express();
 
@@ -22,6 +23,19 @@ app.use(function(req, res, next) {
     next();
   }
 });
+
+
+app.get('/', (req, res) => {
+  const timestamp = moment().format('MMM Do YYYY, h:mm:ss a');
+  res.send(`Datahub is up, ${timestamp}.`);
+});
+
+app.get('/helloworld', (req, res) => {
+  res.status(200).json({
+    message: "Hello there!"
+  })
+});
+
 
 
 // Enable routes with /api prefix
