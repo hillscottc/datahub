@@ -30,6 +30,14 @@ app.get('/', (req, res) => {
   res.send(`Datahub is up, ${timestamp}.`);
 });
 
+app.get('/helloworld', (req, res) => {
+  res.status(200).json({
+    message: "Hello there!"
+  })
+});
+
+
+
 // Enable routes with /api prefix
 const api_plants = require('./api_plants');
 app.use('/api', api_plants);
