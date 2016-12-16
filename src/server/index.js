@@ -24,6 +24,11 @@ app.use(function(req, res, next) {
 });
 
 
+app.get('/', (req, res) => {
+  res.send('Datahub is up.')
+});
+
+
 // Enable routes with /api prefix
 const api_plants = require('./api_plants');
 app.use('/api', api_plants);
